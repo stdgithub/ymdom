@@ -1,0 +1,793 @@
+<!doctype html>
+
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="ru"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="ru"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="ru"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru"> <!--<![endif]-->
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Умный дом stD - часть третья</title>
+<link rel="author" href="https://plus.google.com/104333559503937496126" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="shim.css" type="text/css" />
+<link rel="stylesheet" href="knopki.css" type="text/css" />
+<link rel="stylesheet" href="slai.css" type="text/css"/>
+<script src="jquery-latest.js"></script>
+<script src="jquery-ui.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
+
+<script>
+var dlina = 18; /* количество блоков (разделённых запятой) в ответе от ардуино (нужно менять если добавляете функции в ардуине)  */
+var flagobnov = 1;
+var shim1 = 0;
+var shim2 = 0;
+var shim3 = 0;
+var slmode = 0;
+$(document).ready(function(){ 
+
+$(".slip").click(function(){ /* кнопка пуск  */
+
+	$(".pansl").hide();
+	flagobnov = 1;
+	show();
+});
+
+$(".knp1").click(function(){ /* показать панель "кнопки"  */
+	$(".panel1").toggle();
+});
+
+$(".knp2").click(function(){ /* показать панель "диммер"  */
+	$(".panel2").toggle();
+});
+
+$(".knp3").click(function(){ /* показать панель "темп"  */
+	$(".panel3").toggle();
+});
+
+/* настройка охлаждения */
+$(".oxlpl").click(function(){ /* нажатие на кнопку "температура охлаждения +" */
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=N", /* отправка символа N */
+                             timeout:200, /* время (мс), в течении которого функция будет ждать ответа от сервера */   
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(","); /* разбор строки принятой от ардуино */
+                                    if(vars.length == dlina) /* проверка длины данных (количество блоков разделённых запятой) */
+                                       { 
+                                         if(vars[5] == 1) { $(".oxlplrab").show(); $(".oxlpl").hide(); }  /* если охлаждение работает, то плюсик будет красный */
+                                         else if(vars[5] == 0) { $(".oxlpl").show(); $(".oxlplrab").hide(); }
+                                         $("#toxlagdenie").html(vars[16] + "`C" ); /* температура охлаждения */ 
+                                       }  
+                                }   
+ 	                   }); 
+                  
+	});
+
+$(".oxlplrab").click(function(){ /* нажатие на кнопку "температура охлаждения +" */
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=N", /* отправка символа N */
+                             timeout:200, /* время (мс), в течении которого функция будет ждать ответа от сервера */   
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(","); /* разбор строки принятой от ардуино */
+                                    if(vars.length == dlina) /* проверка длины данных (количество блоков разделённых запятой) */
+                                       { 
+                                         if(vars[5] == 1) { $(".oxlplrab").show(); $(".oxlpl").hide(); }  /* если охлаждение работает, то плюсик будет красный */
+                                         else if(vars[5] == 0) { $(".oxlpl").show(); $(".oxlplrab").hide(); }
+                                         $("#toxlagdenie").html(vars[16] + "`C" ); /* температура охлаждения */ 
+                                       }  
+                                }   
+ 	                   }); 
+                  
+	});
+
+$(".oxlmin").click(function(){  /* нажатие на кнопку "температура охлаждения -" */
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=n", /* отправка символа n */
+                             timeout:200, /* время (мс), в течении которого функция будет ждать ответа от сервера */   
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(","); /* разбор строки принятой от ардуино */
+                                    if(vars.length == dlina) /* проверка длины данных (количество блоков разделённых запятой) */
+                                       { 
+                                         if(vars[5] == 1) { $("#tox").html("<vl3a></vl3a>"); }  /* рамка вокруг температуры охлаждения */
+                                         else if(vars[5] == 0) { $("#tox").html("<vl3b></vl3b>"); }
+                                         $("#toxlagdenie").html(vars[16] + "`C" ); /* температура охлаждения */ 
+                                       }  
+                                }   
+ 	                   }); 
+
+	});
+
+/* настройка подогрева */
+$(".podpl").click(function(){ /* нажатие на кнопку "температура охлаждения +" */
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=P", /* отправка символа N */
+                             timeout:200, /* время (мс), в течении которого функция будет ждать ответа от сервера */   
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(","); /* разбор строки принятой от ардуино */
+                                    if(vars.length == dlina) /* проверка длины данных (количество блоков разделённых запятой) */
+                                       { 
+                                         if(vars[6] == 1) { $(".podplrab").show(); $(".podpl").hide(); }  /* если подогрев работает, то плюсик будет красный */
+                                         else if(vars[6] == 0) { $(".podpl").show(); $(".podplrab").hide(); }
+                                         $("#tpodogrev").html(vars[17] + "`C") ;   /* температура подогрева */
+                                       }  
+                                }   
+ 	                   }); 
+                  
+	});
+
+$(".podplrab").click(function(){ /* нажатие на кнопку "температура охлаждения +" */
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=P", /* отправка символа N */
+                             timeout:200, /* время (мс), в течении которого функция будет ждать ответа от сервера */   
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(","); /* разбор строки принятой от ардуино */
+                                    if(vars.length == dlina) /* проверка длины данных (количество блоков разделённых запятой) */
+                                       { 
+                                         if(vars[6] == 1) { $(".podplrab").show(); $(".podpl").hide(); }  /* если подогрев работает, то плюсик будет красный */
+                                         else if(vars[6] == 0) { $(".podpl").show(); $(".podplrab").hide(); }
+                                         $("#tpodogrev").html(vars[17] + "`C") ;   /* температура подогрева */
+                                       }  
+                                }   
+ 	                   }); 
+                  
+	});
+
+$(".podmin").click(function(){  /* нажатие на кнопку "температура охлаждения -" */
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=p", /* отправка символа n */
+                             timeout:200, /* время (мс), в течении которого функция будет ждать ответа от сервера */   
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(","); /* разбор строки принятой от ардуино */
+                                    if(vars.length == dlina) /* проверка длины данных (количество блоков разделённых запятой) */
+                                       { 
+                                         if(vars[6] == 1) { $(".podplrab").show(); $(".podpl").hide(); }  /* если подогрев работает, то плюсик будет красный */
+                                         else if(vars[6] == 0) { $(".podpl").show(); $(".podplrab").hide(); }
+                                         $("#tpodogrev").html(vars[17] + "`C") ;   /* температура подогрева */
+                                       }  
+                                }   
+ 	                   }); 
+
+	});
+
+
+/* d2 */
+$(".d2vkl").click(function(){ /* нажатие на кнопку */
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=A", /* отправка символа А */
+                             timeout:200, /* время (мс), в течении которого функция будет ждать ответа от сервера */   
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(","); /* разбор строки принятой от ардуино */
+                                    if(vars.length == dlina) /* проверка длины данных (количество блоков разделённых запятой) */
+                                       { 
+                                          if(vars[0] == 1) { $(".d2otkl").show(); $(".d2vkl").hide(); } /* в зависимости от принятого флага скрывает/показавыет кнопку вкл или откл */
+                                          else if(vars[0] == 0) { $(".d2otkl").hide(); $(".d2vkl").show(); } 
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+$(".d2otkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=a",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          if(vars[0] == 1) { $(".d2otkl").show(); $(".d2vkl").hide(); }
+                                          else if(vars[0] == 0) { $(".d2otkl").hide(); $(".d2vkl").show(); }
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+/* d3 */
+$(".d3vkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=B",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          if(vars[1] == 1) { $(".d3otkl").show(); $(".d3vkl").hide(); }
+                                          else if(vars[1] == 0) { $(".d3otkl").hide(); $(".d3vkl").show(); } 
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+$(".d3otkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=b",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          if(vars[1] == 1) { $(".d3otkl").show(); $(".d3vkl").hide(); }
+                                          else if(vars[1] == 0) { $(".d3otkl").hide(); $(".d3vkl").show(); }
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+/* d4 */
+$(".d4vkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=C",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          if(vars[2] == 1) { $(".d4otkl").show(); $(".d4vkl").hide(); }
+                                          else if(vars[2] == 0) { $(".d4otkl").hide(); $(".d4vkl").show(); } 
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+$(".d4otkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=c",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          if(vars[2] == 1) { $(".d4otkl").show(); $(".d4vkl").hide(); }
+                                          else if(vars[2] == 0) { $(".d4otkl").hide(); $(".d4vkl").show(); }
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+/* d5 ШИМ */
+/*мгновенное включение ШИМ на D5*/
+$(".d5shimvkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=F",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          shim1 = vars[12]; /* получаем от ардуины ответ с новым значением ШИМ */
+					  sh1(); /* и выводим значение ШИМа на индикатор */
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+/*мгновенное отключение ШИМ на D5*/
+$(".d5shimotkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=f",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          shim1 = vars[12]; /* получаем от ардуины ответ с новым значением ШИМ */
+					  sh1(); /* и выводим значение ШИМа на индикатор */
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+/* d6 ШИМ */
+/*мгновенное включение ШИМ на D6*/
+$(".d6shimvkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=G",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          shim2 = vars[13]; /* получаем от ардуины ответ с новым значением ШИМ */
+					  sh2(); /* и выводим значение ШИМа на индикатор */
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+/*мгновенное отключение ШИМ на D6*/
+$(".d6shimotkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=g",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          shim2 = vars[13]; /* получаем от ардуины ответ с новым значением ШИМ */
+					  sh2(); /* и выводим значение ШИМа на индикатор */
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+
+/* d11 */
+$(".d11vkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=J",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          if(vars[9] == 1) { $(".d11otkl").show(); $(".d11vkl").hide(); }
+                                          else if(vars[9] == 0) { $(".d11otkl").hide(); $(".d11vkl").show(); } 
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+$(".d11otkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=j",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          if(vars[9] == 1) { $(".d11otkl").show(); $(".d11vkl").hide(); }
+                                          else if(vars[9] == 0) { $(".d11otkl").hide(); $(".d11vkl").show(); }
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+/* d12 */
+$(".d12vkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=K",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          if(vars[10] == 1) { $(".d12otkl").show(); $(".d12vkl").hide(); }
+                                          else if(vars[10] == 0) { $(".d12otkl").hide(); $(".d12vkl").show(); } 
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+$(".d12otkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=k",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          if(vars[10] == 1) { $(".d12otkl").show(); $(".d12vkl").hide(); }
+                                          else if(vars[10] == 0) { $(".d12otkl").hide(); $(".d12vkl").show(); }
+                                       }  
+                                }   
+ 	                   }); 
+                     return false;
+                  
+	});
+
+/* d13 */
+$(".d13vkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=M",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          if(vars[11] == 1) { $(".d13otkl").show(); $(".d13vkl").hide(); }
+                                          else if(vars[11] == 0) { $(".d13otkl").hide(); $(".d13vkl").show(); } 
+                                       }  
+                                }   
+ 	                   }); 
+                  
+	});
+
+$(".d13otkl").click(function(){
+                    $.ajax({  
+		             type: "GET",  
+		             url: "box2.php?df=m",
+                             timeout:200,
+                             cache: false,  
+                             success: function(data)
+                                {                       
+                                  var vars = data.split(",");
+                                    if(vars.length == dlina) 
+                                       { 
+                                          if(vars[11] == 1) { $(".d13otkl").show(); $(".d13vkl").hide(); }
+                                          else if(vars[11] == 0) { $(".d13otkl").hide(); $(".d13vkl").show(); }
+                                       }  
+                                }   
+ 	                   }); 
+                  
+	});
+
+
+}); 
+
+/*обновление*/
+show();
+setInterval(show,1000);  /* частота обновления в милисекундах */
+function show(){  /* функция обновления */
+if(flagobnov == 1) { /* это флаг нужен для временного отключения обновления */
+            $.ajax({ 
+                type: "GET",
+	        url: "box2.php?df=o", /* отправка символа о */
+                timeout:200, /* время (мс), в течении которого функция будет ждать ответа от сервера */          
+                cache: false,       
+                success: function(data){   
+                                          
+                           var vars = data.split(","); /* разбор строки принятой от ардуино */
+                           if(vars.length == dlina){ /* проверка длины данных (количество блоков разделённых запятой) */
+                               
+                               /*d2*/
+                               if(vars[0] == 1) { $(".d2otkl").show(); $(".d2vkl").hide(); }  /* в зависимости от принятого флага скрывает/показавыет кнопку вкл или откл */
+                               else if(vars[0] == 0) { $(".d2otkl").hide(); $(".d2vkl").show(); } 
+
+                               /*d3*/
+                               if(vars[1] == 1) { $(".d3otkl").show(); $(".d3vkl").hide(); }
+                               else if(vars[1] == 0) { $(".d3otkl").hide(); $(".d3vkl").show(); }
+
+                               /*d4*/
+                               if(vars[2] == 1) { $(".d4otkl").show(); $(".d4vkl").hide(); }
+                               else if(vars[2] == 0) { $(".d4otkl").hide(); $(".d4vkl").show(); }
+                    
+                               /*d11*/
+                               if(vars[9] == 1) { $(".d11otkl").show(); $(".d11vkl").hide(); }
+                               else if(vars[9] == 0) { $(".d11otkl").hide(); $(".d11vkl").show(); }
+
+                               /*d12*/
+                               if(vars[10] == 1) { $(".d12otkl").show(); $(".d12vkl").hide(); }
+                               else if(vars[10] == 0) { $(".d12otkl").hide(); $(".d12vkl").show(); }
+        
+                               /*d13*/
+                               if(vars[11] == 1) { $(".d13otkl").show(); $(".d13vkl").hide(); }
+                               else if(vars[11] == 0) { $(".d13otkl").hide(); $(".d13vkl").show(); }
+
+                               $('#std').html("<v2>stD</v2>"); /* если данные приняты правильно, то надпись stD будет серой */ 
+
+                               $("#thum").html(vars[14] + "`C"); /* температура */ 
+
+                               $("#hum").html(vars[15] + " %");   /* влажность */
+
+                               $("#toxlagdenie").html(vars[16] + "`C"); /* температура охлаждения */ 
+
+                               $("#tpodogrev").html(vars[17] + "`C") ;   /* температура подогрева */
+
+                               /*d7*/
+                               if(vars[5] == 1) { $(".oxlplrab").show(); $(".oxlpl").hide(); }  /* если охлаждение работает, то плюсик будет красный */
+                               else if(vars[5] == 0) { $(".oxlpl").show(); $(".oxlplrab").hide(); }
+
+                               /*d8*/
+                               if(vars[6] == 1) { $(".podplrab").show(); $(".podpl").hide(); }  /* если подогрев работает, то плюсик будет красный */
+                               else if(vars[6] == 0) { $(".podpl").show(); $(".podplrab").hide(); }
+
+			       shim1 = vars[12]; /* получаем значение ШИМ */ 
+			       sh1(); /* и выводим его на первый индикатор */ 
+
+			       shim2 = vars[13]; 
+			       sh2();				                               
+                             }
+                          else 
+                             {
+                               $('#std').html("<v>stD</v>"); /* если данные приняты НЕправильно, то надпись stD будет красной */
+                             } 
+                        }
+                   });  
+
+slmode++;
+if(slmode > 60) { /* спящий режим */
+$(".pansl").show();
+$("st").hide();
+flagobnov = 0;
+slmode = 0;
+}
+
+
+}
+}
+
+function sh1(){ /* рисование первого индикатора */
+  var $ppc = $('.progress-pie-chart'),
+    percent = shim1,
+    deg = 360*percent/100;
+  if (percent > 50) {
+    $ppc.addClass('gt-50');
+  }
+  else $ppc.removeClass('gt-50');
+  $('.ppc-progress-fill').css('transform','rotate('+ deg +'deg)');
+  $('.ppc-percents span').html(percent+' % &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D5&nbsp;&nbsp;'); /* название на кнопке - D5 */
+  sl1();
+}
+
+function sl1(){ /* первый слайдер */
+       $( "#slider" ).slider({
+       value : shim1,
+       min : 0,
+       max : 100,
+       step : 1,
+       slide: function( event, ui ) {  /* отправили новое значение в арду, получили его обратно, отправили на индикатор и отдуда вернули сюда чтоб установить слайдер */
+       flagobnov = 0; /* пока таскаем ползунок отключаем обновление, чтоб не засорять "эфир" */
+           if( ui.value > shim1 ){ /* если потащили ползунок в большую сторону, то увеличиваем ШИМ */
+		$.ajax({  
+		    type: "GET",  
+		    url: "box2.php?df=D", /* говорим ардуине что надо увеличить ШИМ  на единицу */
+                    timeout:200,
+                    cache: false,  
+                    success: function(data){                       
+                         var vars = data.split(",");
+                         if(vars.length == dlina) 
+                             { 
+			       shim1 = vars[12]; /* получаем от ардуины ответ с новым значением ШИМ */
+			       sh1(); /* и выводим значение ШИМа на индикатор */
+			     }  
+                    }   
+ 	        });
+           }
+
+           else if( ui.value < shim1 ){ /* если потащили ползунок в меньшую сторону, то уменьшаем ШИМ */
+		$.ajax({  
+		    type: "GET",  
+		    url: "box2.php?df=d", /* говорим ардуине что надо уменьшить ШИМ  на единицу */
+                    timeout:200,
+                    cache: false,  
+                    success: function(data){                       
+                         var vars = data.split(",");
+                         if(vars.length == dlina) 
+                             { 
+			       shim1 = vars[12]; /* получаем от ардуины ответ с новым значением ШИМ */
+			       sh1(); /* и выводим значение ШИМа на индикатор */
+			     }  
+                    }   
+ 	        });
+           }
+
+        flagobnov = 1; /* включаем обновление */
+       }
+    });
+}
+
+
+function sh2(){ /* рисование второго индикатора */
+  var $ppc1 = $('.progress1-pie1-chart1'),
+    percent = shim2,
+    deg = 360*percent/100;
+  if (percent > 50) {
+    $ppc1.addClass('gt-50');
+  }
+  else $ppc1.removeClass('gt-50');
+  $('.ppc1-progress1-fill1').css('transform','rotate('+ deg +'deg)');
+  $('.ppc1-percents1 span').html(percent+' % &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D6&nbsp;&nbsp;'); /* название на кнопке - D6 */
+  sl2();
+}
+
+function sl2(){ /* второй слайдер */
+       $( "#slider2" ).slider({
+       value : shim2,
+       min : 0,
+       max : 100,
+       step : 1,
+       slide: function( event, ui ) {  /* отправили новое значение в арду, получили его обратно, отправили на индикатор и отдуда вернули сюда чтоб установить слайдер */
+       flagobnov = 0; /* пока таскаем ползунок отключаем обновление, чтоб не засорять "эфир" */
+           if( ui.value > shim2 ){ /* если потащили ползунок в большую сторону, то увеличиваем ШИМ */
+		$.ajax({  
+		    type: "GET",  
+		    url: "box2.php?df=E", /* говорим ардуине что надо увеличить ШИМ  на единицу */
+                    timeout:200,
+                    cache: false,  
+                    success: function(data){                       
+                         var vars = data.split(",");
+                         if(vars.length == dlina) 
+                             { 
+			       shim2 = vars[13]; /* получаем от ардуины ответ с новым значением ШИМ */
+			       sh2(); /* и выводим значение ШИМа на индикатор */
+			     }  
+                    }   
+ 	        });
+           }
+
+           else if( ui.value < shim2 ){ /* если потащили ползунок в меньшую сторону, то уменьшаем ШИМ */
+		$.ajax({  
+		    type: "GET",  
+		    url: "box2.php?df=e", /* говорим ардуине что надо уменьшить ШИМ  на единицу */
+                    timeout:200,
+                    cache: false,  
+                    success: function(data){                       
+                         var vars = data.split(",");
+                         if(vars.length == dlina) 
+                             { 
+			       shim2 = vars[13]; /* получаем от ардуины ответ с новым значением ШИМ */
+			       sh2(); /* и выводим значение ШИМа на индикатор */
+			     }  
+                    }   
+ 	        });
+           }
+
+        flagobnov = 1; /* включаем обновление */
+       }
+    });
+}
+</script>
+
+</head>
+<body>
+<div id="std"></div> 
+<div class="knp1" title="Кнопки" >Кнопки</div> 
+<div class="knp2" title="Диммер" >Диммер</div> 
+<div class="knp3" title="Темп" >Темп</div> 
+
+<div class="panel2">
+<!-- первый индикатор, здесь ничего трогать не нужно -->
+<div class="progress-pie-chart">
+  <div class="ppc-progress">
+    <div class="ppc-progress-fill"></div>
+  </div>
+  <div class="ppc-percents">
+   <div class="d5shimvkl" title="Мгновенное включение ШИМ на D5"></div> <!-- мгновенное включение ШИМ на D5 -->
+   <div class="d5shimotkl" title="Мгновенное отключение ШИМ на D5"></div> <!-- мгновенное отключение ШИМ на D5 -->
+    <div class="pcc-percents-wrapper">
+      <span>%</span>
+    </div>
+  </div>
+</div>
+
+<!-- второй индикатор -->
+<div class="progress1-pie1-chart1" >
+  <div class="ppc1-progress1">
+    <div class="ppc1-progress1-fill1"></div>
+  </div>
+  <div class="ppc1-percents1">
+   <div class="d6shimvkl" title="Мгновенное включение ШИМ на D6"></div> <!-- мгновенное включение ШИМ на D6 -->
+   <div class="d6shimotkl" title="Мгновенное отключение ШИМ на D6"></div> <!-- мгновенное отключение ШИМ на D6 -->
+    <div class="pcc1-percents1-wrapper1">
+      <span>%</span>
+    </div>
+  </div>
+</div>
+
+<s1><div id="slider" title="Сдвинь меня"></div>< &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></s1> <!-- первый слайдер -->
+<s2><div id="slider2" title="Сдвинь меня"></div>< &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></s2> <!-- второй слайдер -->
+</div>
+
+<!-- кнопки -->
+<div class="panel1">
+<div class="knop d2vkl" title="Вкл D2" >D2</div> <!-- здесь менять названия кнопок -->
+<div class="knop d2otkl" title="Откл D2">D2</div> <!-- чтобы убрать кнопку удалите оба блока -->
+
+<div class="knop d3vkl" title="Вкл D3">D3</div>
+<div class="knop d3otkl" title="Откл D3">D3</div>
+
+<div class="knop d4vkl" title="Вкл D4">D4</div>
+<div class="knop d4otkl" title="Откл D4">D4</div>
+
+<div class="knop d11vkl" title="Вкл D11">D11</div>
+<div class="knop d11otkl" title="Откл D11">D11</div>
+
+<div class="knop d12vkl" title="Вкл D12">D12</div>
+<div class="knop d12otkl" title="Откл D12">D12</div>
+
+<div class="knop d13vkl" title="Вкл D13">D13</div>
+<div class="knop d13otkl" title="Откл D13">D13</div>
+</div>
+
+<div class="panel3">
+    <vl1><div id="thum" title="температура"></div></vl1>
+    <vl2><div id="hum" title="влажность"></div></vl2>
+    <div class="oxlpl" title="температура охлаждения +">+</div>
+    <div class="oxlplrab" title="температура охлаждения +">+</div>
+    <div class="oxlmin" title="температура охлаждения -">_</div>
+    <vl3><div id="toxlagdenie" title="температура охлаждения"></div></vl3>
+    <div class="podpl" title="температура подогрева +">+</div>
+    <div class="podplrab" title="температура подогрева +">+</div>
+    <div class="podmin" title="температура подогрева -">_</div>
+    <vl4><div id="tpodogrev" title="температура подогрева"></div></vl4>
+</div>
+
+
+<div class="pansl">
+   <div class="slip" title="спящий режим">ПУСК</div>
+</div>
+<a href="http://istarik.ru/" > <st>istarik.ru</st>
+</body>
+</html>
+
+

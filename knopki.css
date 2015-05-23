@@ -1,0 +1,476 @@
+/*//////////кнопка "кнопки"///////////////*/
+.knp1{
+position: absolute;
+top: 100px; /*координаты кнопок*/
+left: 20px; /*координаты кнопок*/
+width: 200px; /*ширина */
+height: 100px; /*высота */
+background:#79b084; /* цвет фона */
+color: #e2e2e2; /*цвет текста на кнопке*/
+cursor: pointer; 
+font-size: 26px; /*размер текста на кнопках*/
+font-weight: 600; /*ширина текста на кнопках*/
+font-family: Arial, Helvetica, sans-serif; /*шрифт*/
+text-align: center;
+line-height: 3.9;
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3); /*цвет и размер тени кнопки*/
+}
+
+.knp1:hover{ /*наведение мыши на кнопку*/
+box-shadow: 0 0 0 0;
+}
+
+/*//////////кнопка "диммер"///////////////*/
+.knp2{
+position: absolute;
+top: 230px; /*координаты кнопок*/
+left: 20px; /*координаты кнопок*/
+width: 200px; /*ширина */
+height: 100px; /*высота */
+background:#79b084; /* цвет фона */
+color: #e2e2e2; /*цвет текста на кнопке*/
+cursor: pointer; 
+font-size: 26px; /*размер текста на кнопках*/
+font-weight: 600; /*ширина текста на кнопках*/
+font-family: Arial, Helvetica, sans-serif; /*шрифт*/
+text-align: center;
+line-height: 3.9;
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3); /*цвет и размер тени кнопки*/
+}
+
+.knp2:hover{ /*наведение мыши на кнопку*/
+box-shadow: 0 0 0 0;
+}
+
+/*//////////кнопка "темп"///////////////*/
+.knp3{
+position: absolute;
+top: 360px; /*координаты кнопок*/
+left: 20px; /*координаты кнопок*/
+width: 200px; /*ширина */
+height: 100px; /*высота */
+background:#79b084; /* цвет фона */
+color: #e2e2e2; /*цвет текста на кнопке*/
+cursor: pointer; 
+font-size: 26px; /*размер текста на кнопках*/
+font-weight: 600; /*ширина текста на кнопках*/
+font-family: Arial, Helvetica, sans-serif; /*шрифт*/
+text-align: center;
+line-height: 3.9;
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3); /*цвет и размер тени кнопки*/
+}
+
+.knp3:hover{ /*наведение мыши на кнопку*/
+box-shadow: 0 0 0 0;
+}
+
+
+
+/*//////////d2///////////////*/
+
+.d2vkl{
+top: 20px; /*координаты кнопок*/
+left: 20px; /*координаты кнопок*/
+color: #e2e2e2; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3); /*цвет и размер тени кнопки*/
+}
+
+.d2vkl:hover{ /*наведение мыши на кнопку*/
+box-shadow: 0 0 0 0;
+}
+
+/*///////*/
+
+.d2otkl {
+top: 20px;
+left: 20px;
+color: #934898; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.d2otkl:hover{
+box-shadow: 0 0 0 0;
+}
+
+/*//////////d3///////////////*/
+
+.d3vkl{
+top: 20px;
+left: 250px;
+color: #e2e2e2; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.d3vkl:hover{
+box-shadow: 0 0 0 0;
+}
+
+/*///////*/
+
+.d3otkl {
+top: 20px;
+left: 250px;
+color: #934898; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.d3otkl:hover{
+box-shadow: 0 0 0 0;
+}
+
+/*//////////d4///////////////*/
+
+.d4vkl{
+top: 20px;
+left: 480px;
+color: #e2e2e2; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.d4vkl:hover{
+box-shadow: 0 0 0 0;
+}
+
+/*///////*/
+
+.d4otkl {
+top: 20px;
+left: 480px;
+color: #934898; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.d4otkl:hover{
+box-shadow: 0 0 0 0;
+}
+
+/*//////////d8///////////////*/
+
+
+
+/*//////////d9///////////////*/
+
+
+
+/*//////////d10///////////////*/
+
+
+
+/*//////////d11///////////////*/
+
+.d11vkl{
+top: 150px;
+left: 20px;
+color: #e2e2e2; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.d11vkl:hover{
+box-shadow: 0 0 0 0;
+}
+
+/*///////*/
+
+.d11otkl {
+top: 150px;
+left: 20px;
+color: #934898; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.d11otkl:hover{
+box-shadow: 0 0 0 0;
+}
+
+/*//////////d12///////////////*/
+
+.d12vkl{
+top: 150px;
+left: 250px;
+color: #e2e2e2; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.d12vkl:hover{
+box-shadow: 0 0 0 0;
+}
+
+/*///////*/
+
+.d12otkl {
+top: 150px;
+left: 250px;
+color: #934898; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.d12otkl:hover{
+box-shadow: 0 0 0 0;
+}
+
+/*//////////d13///////////////*/
+
+.d13vkl{
+top: 150px;
+left: 480px;
+color: #e2e2e2; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.d13vkl:hover{
+box-shadow: 0 0 0 0;
+}
+
+/*///////*/
+
+.d13otkl {
+top: 150px;
+left: 480px;
+color: #934898; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.d13otkl:hover{
+box-shadow: 0 0 0 0;
+}
+
+.knop {
+background:#79b084; /* цвет фона */
+position: absolute;
+width: 200px; /*ширина для всех кнопок*/
+height: 100px; /*высота для всех кнопок*/
+display: none;
+cursor: pointer; 
+font-size: 26px; /*размер текста на кнопках*/
+font-weight: 600; /*ширина текста на кнопках*/
+font-family: Arial, Helvetica, sans-serif; /*шрифт*/
+text-align: center;
+line-height: 3.9;
+}
+
+/*////////// d5 ШИМ ///////////////*/
+/*мгновенное включение ШИМ на D5*/
+.d5shimvkl{
+top: 6px;
+left: 87px;
+position: absolute;
+width: 80px; /*ширина  кнопок*/
+height: 160px; /*высота  кнопок*/
+border: 1px solid #2b2c2b;
+cursor: pointer; 
+line-height: 18;
+border-radius: 5px 85px 85px 5px;
+box-shadow: 0 0 10px 3px rgba(0,0,0,0.3);
+}
+
+.d5shimvkl:hover{
+box-shadow: 0 0 2px 1px rgba(0,0,0,0.3);
+}
+
+/*///////*/
+
+.d5shimotkl{
+top: 6px;
+left: 5px;
+position: absolute;
+width: 80px; /*ширина  кнопок*/
+height: 160px; /*высота  кнопок*/
+border: 1px solid #2b2c2b;
+cursor: pointer; 
+line-height: 18;
+border-radius: 85px 5px 5px 85px;
+box-shadow: 0 0 10px 3px rgba(0,0,0,0.3);
+}
+
+.d5shimotkl:hover{
+box-shadow: 0 0 2px 1px rgba(0,0,0,0.3);
+}
+
+/*////////// d6 ШИМ ///////////////*/
+/*мгновенное включение ШИМ на D6*/
+.d6shimvkl{
+top: 6px;
+left: 87px;
+position: absolute;
+width: 80px; /*ширина для всех кнопок*/
+height: 160px; /*высота для всех кнопок*/
+border: 1px solid #2b2c2b;
+cursor: pointer; 
+line-height: 18;
+border-radius: 5px 85px 85px 5px;
+box-shadow: 0 0 10px 3px rgba(0,0,0,0.3);
+}
+
+.d6shimvkl:hover{
+box-shadow: 0 0 2px 1px rgba(0,0,0,0.3);
+}
+
+/*///////*/
+
+.d6shimotkl{
+top: 6px;
+left: 5px;
+position: absolute;
+width: 80px; /*ширина для всех кнопок*/
+height: 160px; /*высота для всех кнопок*/
+border: 1px solid #2b2c2b;
+cursor: pointer; 
+line-height: 18;
+border-radius: 85px 5px 5px 85px;
+box-shadow: 0 0 10px 3px rgba(0,0,0,0.3);
+}
+
+.d6shimotkl:hover{
+box-shadow: 0 0 2px 1px rgba(0,0,0,0.3);
+}
+
+/*////////// ОХЛАЖДЕНИЕ ///////////////*/
+.oxlpl{
+background:#79b084; /* цвет фона */
+top: 0px;
+left: 5px;
+position: absolute;
+width: 200px; /*ширина для всех кнопок*/
+height: 100px; /*высота для всех кнопок*/
+cursor: pointer; 
+font-size: 34px; /*размер текста на кнопках*/
+font-weight: 600; /*ширина текста на кнопках*/
+font-family: Arial, Helvetica, sans-serif; /*шрифт*/
+text-align: center;
+line-height: 3.1;
+color: #e2e2e2; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.oxlpl:hover{
+box-shadow: 0 0 0 0;
+}
+
+.oxlplrab{
+background:#79b084; /* цвет фона */
+top: 0px;
+left: 5px;
+position: absolute;
+width: 200px; /*ширина для всех кнопок*/
+height: 100px; /*высота для всех кнопок*/
+cursor: pointer; 
+font-size: 34px; /*размер текста на кнопках*/
+font-weight: 600; /*ширина текста на кнопках*/
+font-family: Arial, Helvetica, sans-serif; /*шрифт*/
+text-align: center;
+line-height: 3.1;
+color: #934898; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.oxlplrab:hover{
+box-shadow: 0 0 0 0;
+}
+
+.oxlmin{
+background:#79b084; /* цвет фона */
+top: 130px;
+left: 5px;
+position: absolute;
+width: 200px; /*ширина для всех кнопок*/
+height: 100px; /*высота для всех кнопок*/
+cursor: pointer; 
+font-size: 34px; /*размер текста на кнопках*/
+font-weight: 600; /*ширина текста на кнопках*/
+font-family: Arial, Helvetica, sans-serif; /*шрифт*/
+text-align: center;
+line-height: 2.1;
+color: #e2e2e2; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.oxlmin:hover{
+box-shadow: 0 0 0 0;
+}
+
+/*////////// ПОДОГРЕВ ///////////////*/
+.podpl{
+background:#79b084; /* цвет фона */
+top: 0px;
+left: 466px;
+position: absolute;
+width: 200px; /*ширина для всех кнопок*/
+height: 100px; /*высота для всех кнопок*/
+cursor: pointer; 
+font-size: 34px; /*размер текста на кнопках*/
+font-weight: 600; /*ширина текста на кнопках*/
+font-family: Arial, Helvetica, sans-serif; /*шрифт*/
+text-align: center;
+line-height: 3.1;
+color: #e2e2e2; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.podpl:hover{
+box-shadow: 0 0 0 0;
+}
+
+.podplrab{
+background:#79b084; /* цвет фона */
+top: 0px;
+left: 466px;
+position: absolute;
+width: 200px; /*ширина для всех кнопок*/
+height: 100px; /*высота для всех кнопок*/
+cursor: pointer; 
+font-size: 34px; /*размер текста на кнопках*/
+font-weight: 600; /*ширина текста на кнопках*/
+font-family: Arial, Helvetica, sans-serif; /*шрифт*/
+text-align: center;
+line-height: 3.1;
+color: #934898; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.podplrab:hover{
+box-shadow: 0 0 0 0;
+}
+
+.podmin{
+background:#79b084; /* цвет фона */
+top: 130px;
+left: 466px;
+position: absolute;
+width: 200px; /*ширина для всех кнопок*/
+height: 100px; /*высота для всех кнопок*/
+cursor: pointer; 
+font-size: 34px; /*размер текста на кнопках*/
+font-weight: 600; /*ширина текста на кнопках*/
+font-family: Arial, Helvetica, sans-serif; /*шрифт*/
+text-align: center;
+line-height: 2.1;
+color: #e2e2e2; /*цвет текста на кнопках*/
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.podmin:hover{
+box-shadow: 0 0 0 0;
+}
+
+/* спящий режим */
+.slip{
+background:#79b084; 
+top: 85%;
+left: 20px;
+position: absolute;
+width: 200px; 
+height: 100px; 
+cursor: pointer; 
+font-size: 26px; 
+font-weight: 600; 
+font-family: Arial, Helvetica, sans-serif; 
+text-align: center;
+line-height: 3.9;
+color: #e2e2e2; 
+box-shadow: 0 7px 3px 0 rgba(0,0,0,0.3);
+}
+
+.slip:hover{
+box-shadow: 0 0 0 0;
+}
+

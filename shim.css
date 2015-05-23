@@ -1,0 +1,162 @@
+/* первый кружок */
+.progress-pie-chart {
+  width: 200px;
+  height: 200px;
+  top: 0px; /* позиция */
+  left: 30px; /* позиция */
+  border-radius: 50%;
+  background-color: #c1bfbf;
+  position: absolute;
+}
+
+.progress-pie-chart.gt-50 {
+  background-color: #65c178;
+}
+
+.ppc-progress {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  clip: rect(0, 200px, 200px, 100px);
+}
+
+.ppc-progress .ppc-progress-fill {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  clip: rect(0, 100px, 200px, 0);
+  background: #65c178;
+  transform: rotate(60deg);
+}
+
+.gt-50 .ppc-progress {
+  clip: rect(0, 100px, 200px, 0);
+}
+
+.gt-50 .ppc-progress .ppc-progress-fill {
+  clip: rect(0, 200px, 200px, 100px);
+  background: #c1bfbf;
+}
+
+.ppc-percents {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 173.91304px/2);
+  top: calc(50% - 173.91304px/2);
+  width: 173.91304px;
+  height: 173.91304px;
+  background: #fff;
+  text-align: center;
+  display: table;
+  background:#312f2f;
+}
+
+.ppc-percents span {
+  display: block;
+  font-size: 26px; /*размер текста на кружках*/
+  font-weight: 600; /*ширина текста на кружках*/
+  font-family: Arial, Helvetica, sans-serif; /*шрифт*/
+  color: #2a2a2a; /*цвет текста на кружках*/
+  text-shadow: 0px 1px 2px #7c7c7c; /*цвет и размер тени текста*/
+}
+
+.pcc-percents-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.progress-pie-chart {
+  margin: 50px auto 0;
+}
+
+/* второй кружок */
+.progress1-pie1-chart1 {
+  width: 200px;
+  height: 200px;
+  top: 0px; /* позиция */
+  left: 370px; /* позиция */
+  border-radius: 50%;
+  background-color: #c1bfbf;
+  position: absolute;
+}
+
+.progress1-pie1-chart1.gt-50 {
+  background-color: #65c178;
+}
+
+.ppc1-progress1 {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  clip: rect(0, 200px, 200px, 100px);
+}
+
+.ppc1-progress1 .ppc1-progress1-fill1 {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  clip: rect(0, 100px, 200px, 0);
+  background: #65c178;
+  transform: rotate(60deg);
+}
+
+.gt-50 .ppc1-progress1 {
+  clip: rect(0, 100px, 200px, 0);
+}
+
+.gt-50 .ppc1-progress1 .ppc1-progress1-fill1 {
+  clip: rect(0, 200px, 200px, 100px);
+  background: #c1bfbf;
+}
+
+.ppc1-percents1 {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 173.91304px/2);
+  top: calc(50% - 173.91304px/2);
+  width: 173.91304px;
+  height: 173.91304px;
+  background: #fff;
+  text-align: center;
+  display: table;
+  background:#312f2f;
+}
+
+.ppc1-percents1 span {
+  display: block;
+  font-size: 26px; /*размер текста на кружках*/
+  font-weight: 600; /*ширина текста на кружках*/
+  font-family: Arial, Helvetica, sans-serif; /*шрифт*/
+  color: #2a2a2a; /*цвет текста на кружках*/
+  text-shadow: 0px 1px 2px #7c7c7c; /*цвет и размер тени текста*/
+}
+
+.pcc1-percents1-wrapper1 {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.progress1-pie1-chart1 {
+  margin: 50px auto 0;
+}
+
+
+
