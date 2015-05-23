@@ -35,7 +35,6 @@ byte count=0; // счетчик минут
 
 void setup() 
 {
-  time = millis();  // время
   Serial.begin(57600);
   pinMode(2, OUTPUT); 
   pinMode(3, OUTPUT);
